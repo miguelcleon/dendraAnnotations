@@ -2,6 +2,7 @@ import requests
 import datetime as dt
 from datetime import timedelta as timedelta
 import dendra_api_client as dendra
+import pandas
 
 # Get annotations related to a datastream
 # between a start and end date.
@@ -107,7 +108,7 @@ def getDSvalsAddLabels(datastream,  begins_at, ends_before, annotimes, annovals,
     for time, wtem, label in zip(annotimes, annovals, labels):
         for index, row in df.iterrows():
             # print(index)
-            if isinstance(index, dt.datetime):
+            if type(index) is pandas.Timestamp:
                 dftimetemplow = index - timedelta(minutes=5)
                 dftimetemphigh = index + timedelta(minutes=5)
             else:
