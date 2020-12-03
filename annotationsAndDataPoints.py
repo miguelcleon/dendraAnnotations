@@ -107,8 +107,12 @@ def getDSvalsAddLabels(datastream,  begins_at, ends_before, annotimes, annovals,
     for time, wtem, label in zip(annotimes, annovals, labels):
         for index, row in df.iterrows():
             # print(index)
-            dftimetemplow = dt.strptime(index, '%Y-%m-%dT%H:%M:%S.%fZ') - timedelta(minutes=5)
-            dftimetemphigh = dt.strptime(index, '%Y-%m-%dT%H:%M:%S.%fZ') + timedelta(minutes=5)
+            if  isinstance(index, dt.datetime):
+                dftimetemplow = index - timedelta(minutes=5)
+                dftimetemphigh = index + timedelta(minutes=5)
+            else:
+                dftimetemplow = dt.strptime(index, '%Y-%m-%dT%H:%M:%S.%fZ') - timedelta(minutes=5)
+                dftimetemphigh = dt.strptime(index, '%Y-%m-%dT%H:%M:%S.%fZ') + timedelta(minutes=5)
             # dftimetemplow = dftimetemplow.strftime('%Y-%m-%d %H:%M')
             # dftimetemphigh = dftimetemphigh.strftime('%Y-%m-%d %H:%M')
             # dftimetemp = datetime.strptime(row['timestamp_local'], '%Y-%m-%dT%H:%M:%S.%f').strftime('%Y-%m-%d %H:%M')
