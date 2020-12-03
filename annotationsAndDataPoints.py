@@ -1,5 +1,5 @@
 import requests
-from datetime import datetime
+import datetime
 from datetime import timedelta as timedelta
 import dendra_api_client as dendra
 
