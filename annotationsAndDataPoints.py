@@ -95,6 +95,7 @@ def getAnnotations(datastream, begins_at, ends_before):
 # return annotations and datapoints.
 
 def getDSvalsAddLabels(datastream,  begins_at, ends_before, annotimes, annovals, labels):
+    print(datastream)
     df = dendra.get_datapoints(datastream,begins_at,ends_before,time_type='utc')
     print(type(df))
     print(df)
