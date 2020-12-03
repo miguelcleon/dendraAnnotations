@@ -97,8 +97,7 @@ def getAnnotations(datastream, begins_at, ends_before):
 def getDSvalsAddLabels(datastream,  begins_at, ends_before, annotimes, annovals, labels):
     df = dendra.get_datapoints(datastream,begins_at,ends_before,time_type='utc')
     print(type(df))
-    for col in df.columns:
-        print(col)
+    print(df)
     count = 0
     count2 = 0
     newtemps = []
