@@ -1,5 +1,5 @@
 import requests
-import datetime as dt
+from datetime import datetime as dt
 from datetime import timedelta as timedelta
 import dendra_api_client as dendra
 import pandas
