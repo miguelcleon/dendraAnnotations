@@ -1,5 +1,5 @@
 import requests
-import datetime as dt
+from datetime import datetime
 from datetime import timedelta as timedelta
 import dendra_api_client as dendra
 import pandas
@@ -78,7 +78,7 @@ def getAnnotations(datastream, begins_at, ends_before):
                         # print('SECOND DT')
                         wtemp.append(actionvalue)
                         labels.append(tmplabel)
-                    datet = dt.strptime(values2, '%Y-%m-%dT%H:%M:%S.%fZ').strftime('%Y-%m-%d %H:%M')
+                    datet = datetime.strptime(values2, '%Y-%m-%dT%H:%M:%S.%fZ').strftime('%Y-%m-%d %H:%M')
                     # dt = dt.strftime(dt, '')
                     times.append(datet)
                     secondval = True
@@ -112,12 +112,12 @@ def getDSvalsAddLabels(datastream,  begins_at, ends_before, annotimes, annovals,
                 dftimetemplow = index - timedelta(minutes=5)
                 dftimetemphigh = index + timedelta(minutes=5)
             else:
-                dftimetemplow = dt.strptime(index, '%Y-%m-%dT%H:%M:%S.%fZ') - timedelta(minutes=5)
-                dftimetemphigh = dt.strptime(index, '%Y-%m-%dT%H:%M:%S.%fZ') + timedelta(minutes=5)
+                dftimetemplow = datetime.strptime(index, '%Y-%m-%dT%H:%M:%S.%fZ') - timedelta(minutes=5)
+                dftimetemphigh = datetime.strptime(index, '%Y-%m-%dT%H:%M:%S.%fZ') + timedelta(minutes=5)
             # dftimetemplow = dftimetemplow.strftime('%Y-%m-%d %H:%M')
             # dftimetemphigh = dftimetemphigh.strftime('%Y-%m-%d %H:%M')
             # dftimetemp = datetime.strptime(row['timestamp_local'], '%Y-%m-%dT%H:%M:%S.%f').strftime('%Y-%m-%d %H:%M')
-            annotime = dt.strptime(time, '%Y-%m-%d %H:%M')
+            annotime = datetime.strptime(time, '%Y-%m-%d %H:%M')
             count2 += 1
 
             if annotime >= dftimetemplow and annotime <=dftimetemphigh:
