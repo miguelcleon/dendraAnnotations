@@ -78,7 +78,7 @@ def getAnnotations(datastream, begins_at, ends_before):
                         # print('SECOND DT')
                         wtemp.append(actionvalue)
                         labels.append(tmplabel)
-                    datet = datetime.strptime(values2, '%Y-%m-%dT%H:%M:%S.%fZ').strftime('%Y-%m-%d %H:%M')
+                    datet = dt.strptime(values2, '%Y-%m-%dT%H:%M:%S.%fZ').strftime('%Y-%m-%d %H:%M')
                     # dt = dt.strftime(dt, '')
                     times.append(datet)
                     secondval = True
