@@ -94,12 +94,14 @@ def getAnnotations(datastream, begins_at, ends_before):
 # get data points for a datastream between a start and end date.
 # associate annotations that are flags to data points that are flagged.
 # return annotations and datapoints.
-
 def getDSvalsAddLabels(datastream,  begins_at, ends_before, annotimes, annovals, labels):
     df = dendra.get_datapoints(datastream,begins_at,ends_before,time_type='utc')
     print(type(df))
+    colname = ''
     for col in df.columns:
-        print(col)
+        if 'Unh' in col:
+          colname = col
+          print(col)
     count = 0
     count2 = 0
     newtemps = []
@@ -133,9 +135,9 @@ def getDSvalsAddLabels(datastream,  begins_at, ends_before, annotimes, annovals,
                     # tempval = row['UnhGreatBayBuoy_Water_Temperature']
                     print(label)
                     print(annotime)
-                    print(row['UnhGreatBayBuoy_Water_Temperature'])
+                    print(row[colname])
                     print(row['timestamp_local'])
-                    newtemps.append(row['UnhGreatBayBuoy_Water_Temperature'])
+                    newtemps.append(row[colname])
                     newtimes.append(row['timestamp_local'])
                     newlabels.append(label)
                 # print(time)
