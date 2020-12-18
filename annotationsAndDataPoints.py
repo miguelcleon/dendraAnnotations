@@ -155,26 +155,30 @@ def getDSvalsAddLabels(datastream,  begins_at, ends_before, annotimes, annovals,
                 # print(dftimetemphigh)
                 try:
                     tempval = float(wtem)
+                    newtemps.append(wtem)
+                    newtimes.append(row['timestamp_local'])
+                    newlabels.append(label)
                 except:
                     # tempval = row['UnhGreatBayBuoy_Water_Temperature']
-                    print(label)
-                    print(annotime)
-                    print(row[colname])
-                    print(row['timestamp_local'])
+                    # print('HERE 2')
+                    # print(label)
+                    # print(annotime)
+                    # print(row[colname])
+                    # print(row['timestamp_local'])
                     newtemps.append(row[colname])
                     newtimes.append(row['timestamp_local'])
                     newlabels.append(label)
                 # print(time)
                #  print(wtemp)
-    print(count2)
-    print(newtimes)
-    print(annotimes)
-    times = annotimes + newtimes
-    annovals = annovals + newtemps
-    labels = labels + newlabels
-    print(times)
+    # print(count2)
+    # print(newtimes)
+
+    times = newtimes # annotimes +
+    annovals =  newtemps # annovals +
+    labels =  newlabels #
+    # print(times)
     # print(wtemp)
-    print(count)
-    print(labels)
+    # print(count)
+    # print(labels)
     annotationdf = {'datetime': times, 'annotaions':annovals, 'labels': labels}
     return annotationdf, df
